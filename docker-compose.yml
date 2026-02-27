@@ -32,7 +32,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     depends_on:
-      - backend
+      - back
     ports:
       - "8080:80"
     restart: unless-stopped
