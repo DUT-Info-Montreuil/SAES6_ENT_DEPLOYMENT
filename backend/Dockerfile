@@ -13,4 +13,4 @@ ENV WORKERS=1
 
 EXPOSE ${SERVER_PORT}
 
-CMD ["sh", "-c", "gunicorn -w ${WORKERS} app:app"]
+CMD ["sh", "-c", "gunicorn -b 0.0.0.0:5000 -w ${WORKERS} 'app:create_app()'"]

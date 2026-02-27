@@ -16,10 +16,14 @@ Docker Compose setup for the ENT backend (Flask + Gunicorn), frontend (Angular b
 
 ## Installation
 
-1) Clone the repository and submodules:
-```
-git clone --recurse-submodules
+1) Clone the repository and submodules (on the `main` branch):
+```bash
+git clone -b main --recurse-submodules [https://github.com/DUT-Info-Montreuil/SAES6_ENT_DEPLOYMENT.git](https://github.com/DUT-Info-Montreuil/SAES6_ENT_DEPLOYMENT.git)
 cd SAES6_ENT_DEPLOYMENT
+
+# Force all submodules to checkout their main branch (avoids detached HEAD)
+git submodule foreach git checkout main
+git submodule foreach git pull origin main
 ```
 
 2) Configure the backend:
