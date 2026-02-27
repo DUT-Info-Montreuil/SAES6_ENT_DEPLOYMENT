@@ -1,0 +1,6 @@
+[submodule "backend/SAES6_ENT_BACKEND"]
+	path = backend/SAES6_ENT_BACKEND
+	url = https://github.com/DUT-Info-Montreuil/SAES6_ENT_BACKEND.git
+[submodule "frontend/SAES6_ENT_PRIVATEFRONT"]
+	path = frontend/SAES6_ENT_PRIVATEFRONT
+	url = https://github.com/DUT-Info-Montreuil/SAES6_ENT_PRIVATEFRONT
