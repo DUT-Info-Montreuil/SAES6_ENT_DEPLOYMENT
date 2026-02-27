@@ -1,0 +1,42 @@
+services:
+  database:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./backend/SAES6_ENT_BACKEND/SCRIPT_BD_CREATION.sql:/docker-entrypoint-initdb.d/init.sql
+
+  back:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    env_file:
+      - backend/SAES6_ENT_BACKEND/.env
+    environment:
+      DATABASE_URL: postgresql://user:password@database:5432/db
+      SERVER_PORT: 5000
+      WORKERS: 1
+    ports:
+      - "5000:5000"
+    volumes:
+      - logs:/backend/SAES6_ENT_BACKEND/data/logs
+    restart: unless-stopped
+
+  front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  logs:
